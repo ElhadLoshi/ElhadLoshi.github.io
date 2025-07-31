@@ -1,11 +1,3 @@
-/*
-
-Template 2097 Pop
-
-https://www.tooplate.com/view/2097-pop
-
-*/
-
 @font-face {
   font-family: 'Militech';
   src: url('militech_r_2019-04-13.ttf') format('truetype');
@@ -687,4 +679,127 @@ body[data-current-lang="it"] [data-lang="it"] {
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 15px;
   font-size: 1.2rem;
+}
+
+/* GitHub Section */
+.github-section {
+  margin: 30px 0;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 25px;
+  background-color: rgba(33, 41, 60, 0.8);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.github-link:hover {
+  background-color: rgba(33, 41, 60, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(33, 41, 60, 0.3);
+  color: white;
+  text-decoration: none;
+}
+
+.github-link i {
+  color: white;
+}
+
+.github-link span {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+/* Science Quotes Section */
+.science-quotes-container {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+  max-width: 600px;
+  width: calc(100% - 40px);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(20, 30, 48, 0.5));
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 10px 15px;
+  z-index: 1000;
+  opacity: 0;
+  transition: all 0.5s ease;
+  text-align: center;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+.science-quotes-container.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.quote-content {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.quote-text {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 5px;
+  font-style: italic;
+  line-height: 1.3;
+  letter-spacing: 0.2px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.quote-author {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 300;
+  letter-spacing: 0.6px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .science-quotes-container {
+    padding: 8px 12px;
+    top: 12px;
+    width: calc(100% - 30px);
+    max-width: 480px;
+  }
+  
+  .quote-text {
+    font-size: 0.9rem;
+    line-height: 1.25;
+    margin-bottom: 4px;
+  }
+  
+  .quote-author {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .science-quotes-container {
+    padding: 6px 10px;
+    top: 10px;
+    width: calc(100% - 20px);
+    max-width: 320px;
+  }
+  
+  .quote-text {
+    font-size: 0.85rem;
+    line-height: 1.2;
+    margin-bottom: 3px;
+  }
+  
+  .quote-author {
+    font-size: 0.7rem;
+  }
 }
