@@ -26,6 +26,14 @@
 <body>
     <div id="tm-bg"></div>
     <div id="tm-wrap">
+        <!-- Science Quotes Section -->
+        <div id="science-quotes" class="science-quotes-container">
+            <div class="quote-content">
+                <p id="quote-text" class="quote-text"></p>
+                <span id="quote-author" class="quote-author"></span>
+            </div>
+        </div>
+        
         <!-- Language Toggle Button -->
         <div class="language-toggle">
             <button id="langToggle" class="btn btn-sm btn-outline-light">
@@ -174,12 +182,21 @@
                                                 </div>
                                                 <div class="row mb-4">
                                                     <div class="col-12 text-center">
-                                                        <div class="linkedin-section">
-                                                            <a href="https://www.linkedin.com/in/elhad-loshi-3a484a201/" target="_blank" class="linkedin-link">
-                                                                <i class="fab fa-linkedin fa-3x"></i>
-                                                                <span data-lang="en">Connect on LinkedIn</span>
-                                                                <span data-lang="it">Connettiti su LinkedIn</span>
-                                                            </a>
+                                                        <div class="social-links" style="display: flex; justify-content: center; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+                                                            <div class="linkedin-section" style="margin: 0;">
+                                                                <a href="https://www.linkedin.com/in/elhad-loshi-3a484a201/" target="_blank" class="linkedin-link">
+                                                                    <i class="fab fa-linkedin fa-3x"></i>
+                                                                    <span data-lang="en">Connect on LinkedIn</span>
+                                                                    <span data-lang="it">Connettiti su LinkedIn</span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="github-section" style="margin: 0;">
+                                                                <a href="https://github.com/ElhadLoshi" target="_blank" class="github-link">
+                                                                    <i class="fab fa-github fa-3x"></i>
+                                                                    <span data-lang="en">View on GitHub</span>
+                                                                    <span data-lang="it">Visualizza su GitHub</span>
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -263,6 +280,222 @@
                 const buttonText = currentLang === 'en' ? 'EN/IT' : 'IT/EN';
                 langToggle.innerHTML = '<i class="fas fa-globe"></i> ' + buttonText;
             });
+
+            // Science Quotes Functionality
+            const scienceQuotes = [
+                {
+                    text: "The important thing is not to stop questioning. Curiosity has its own reason for existing.",
+                    author: "Albert Einstein"
+                },
+                {
+                    text: "Science is not only a disciple of reason but also one of romance and passion.",
+                    author: "Stephen Hawking"
+                },
+                {
+                    text: "The good thing about science is that it's true whether or not you believe in it.",
+                    author: "Neil deGrasse Tyson"
+                },
+                {
+                    text: "In science, there is only physics; all the rest is stamp collecting.",
+                    author: "Ernest Rutherford"
+                },
+                {
+                    text: "Science is a way of thinking much more than it is a body of knowledge.",
+                    author: "Carl Sagan"
+                },
+                {
+                    text: "The greatest enemy of knowledge is not ignorance, it is the illusion of knowledge.",
+                    author: "Stephen Hawking"
+                },
+                {
+                    text: "Nothing in life is to be feared, it is only to be understood.",
+                    author: "Marie Curie"
+                },
+                {
+                    text: "Science knows no country, because knowledge belongs to humanity.",
+                    author: "Louis Pasteur"
+                },
+                {
+                    text: "The universe is not only stranger than we imagine, it is stranger than we can imagine.",
+                    author: "J.B.S. Haldane"
+                },
+                {
+                    text: "What we know is a drop, what we don't know is an ocean.",
+                    author: "Isaac Newton"
+                },
+                {
+                    text: "Imagination is more important than knowledge.",
+                    author: "Albert Einstein"
+                },
+                {
+                    text: "If I have seen further it is by standing on the shoulders of giants.",
+                    author: "Isaac Newton"
+                },
+                {
+                    text: "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.",
+                    author: "Albert Einstein"
+                },
+                {
+                    text: "The scientist is not a person who gives the right answers, but one who asks the right questions.",
+                    author: "Claude Lévi-Strauss"
+                },
+                {
+                    text: "Science without religion is lame, religion without science is blind.",
+                    author: "Albert Einstein"
+                },
+                {
+                    text: "The real question is not whether machines think but whether men do.",
+                    author: "B.F. Skinner"
+                },
+                {
+                    text: "Research is what I'm doing when I don't know what I'm doing.",
+                    author: "Wernher von Braun"
+                },
+                {
+                    text: "An expert is someone who knows some of the worst mistakes that can be made in a very narrow field.",
+                    author: "Niels Bohr"
+                },
+                {
+                    text: "The opposite of a correct statement is a false statement. But the opposite of a profound truth may well be another profound truth.",
+                    author: "Niels Bohr"
+                },
+                {
+                    text: "Science progresses one funeral at a time.",
+                    author: "Max Planck"
+                },
+                {
+                    text: "In the field of observation, chance favors only the prepared mind.",
+                    author: "Louis Pasteur"
+                },
+                {
+                    text: "I think, therefore I am.",
+                    author: "René Descartes"
+                },
+                {
+                    text: "The truth is not always beautiful, nor beautiful words the truth.",
+                    author: "Laozi"
+                },
+                {
+                    text: "We are made of star stuff.",
+                    author: "Carl Sagan"
+                },
+                {
+                    text: "The most beautiful thing we can experience is the mysterious.",
+                    author: "Albert Einstein"
+                },
+                {
+                    text: "Logic will get you from A to B. Imagination will take you everywhere.",
+                    author: "Albert Einstein"
+                },
+                {
+                    text: "God does not play dice with the universe.",
+                    author: "Albert Einstein"
+                },
+                {
+                    text: "I am among those who think that science has great beauty.",
+                    author: "Marie Curie"
+                },
+                {
+                    text: "The pursuit of truth is more precious than its possession.",
+                    author: "Gotthold Ephraim Lessing"
+                },
+                {
+                    text: "Technology is best when it brings people together.",
+                    author: "Matt Mullenweg"
+                },
+                {
+                    text: "The science of today is the technology of tomorrow.",
+                    author: "Edward Teller"
+                },
+                {
+                    text: "Innovation distinguishes between a leader and a follower.",
+                    author: "Steve Jobs"
+                },
+                {
+                    text: "The future belongs to those who understand that learning is a lifelong process.",
+                    author: "Frank Herbert"
+                },
+                {
+                    text: "Progress is impossible without change; and those who cannot change their minds cannot change anything.",
+                    author: "George Bernard Shaw"
+                },
+                {
+                    text: "Knowledge speaks, but wisdom listens.",
+                    author: "Jimi Hendrix"
+                }
+            ];
+
+            let quotesVisible = true;
+            let quoteInterval;
+
+            function displayQuote() {
+                const quoteText = document.getElementById('quote-text');
+                const quoteAuthor = document.getElementById('quote-author');
+                
+                if (quoteText && quoteAuthor) {
+                    // Select a random quote
+                    const randomIndex = Math.floor(Math.random() * scienceQuotes.length);
+                    const quote = scienceQuotes[randomIndex];
+                    quoteText.textContent = `"${quote.text}"`;
+                    quoteAuthor.textContent = `— ${quote.author}`;
+                }
+            }
+
+            function startQuoteRotation(showImmediately = true) {
+                if (showImmediately) {
+                    displayQuote(); // Show first quote immediately
+                }
+                quoteInterval = setInterval(displayQuote, 30000); // 30 seconds
+            }
+
+            function stopQuoteRotation() {
+                if (quoteInterval) {
+                    clearInterval(quoteInterval);
+                }
+            }
+
+            function showQuotes() {
+                const quotesContainer = document.getElementById('science-quotes');
+                if (quotesContainer) {
+                    quotesContainer.classList.add('visible');
+                    quotesVisible = true;
+                    displayQuote(); // Show a new quote immediately
+                    startQuoteRotation(false); // Don't show immediately since we just did
+                }
+            }
+
+            function hideQuotes() {
+                const quotesContainer = document.getElementById('science-quotes');
+                if (quotesContainer) {
+                    quotesContainer.classList.remove('visible');
+                    quotesVisible = false;
+                    stopQuoteRotation();
+                }
+            }
+
+            // Initialize quotes on main page
+            showQuotes();
+
+            // Simple state checker - checks if we should show/hide quotes
+            function checkQuoteVisibility() {
+                const detailsElement = $('.details');
+                const detailsOpen = $('.details--open').length > 0;
+                const detailsVisible = detailsElement.length > 0 && detailsElement.css('display') !== 'none';
+                
+                // If details are closed/hidden and quotes are hidden, show them
+                if (!detailsOpen && !detailsVisible && !quotesVisible) {
+                    showQuotes();
+                }
+                // If details are open/visible and quotes are visible, hide them
+                else if ((detailsOpen || detailsVisible) && quotesVisible) {
+                    hideQuotes();
+                }
+            }
+
+            // Check every 500ms for quote visibility state (start after a delay to ensure everything is loaded)
+            setTimeout(() => {
+                setInterval(checkQuoteVisibility, 500);
+            }, 1000);
 
         });
 
