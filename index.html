@@ -1,39 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elhad Loshi Portfolio</title>
-<!--
-
-
--->
-    <!-- load CSS -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300">  <!-- Google web font "Open Sans" -->
-    <link rel="stylesheet" href="https://www.fontsquirrel.com/fonts/commando" type="text/css">  <!-- Commando font from Font Squirrel -->
-    <link rel="stylesheet" href="https://www.dafont.com/militech.font" type="text/css">  <!-- Militech font from dafont.com -->
-    <link rel="stylesheet" href="bootstrap.min.css">                                  <!-- https://getbootstrap.com/ -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">                <!-- https://fontawesome.com/ -->
-    <link rel="stylesheet" type="text/css" href="slick.css"/>                       <!-- http://kenwheeler.github.io/slick/ -->
-    <link rel="stylesheet" type="text/css" href="slick-theme.css"/>
-    <link rel="stylesheet" href="tooplate-style.css">                               <!-- Templatemo style -->
-
-    <script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this in a modern browser such as latest version of Chrome or Microsoft Edge.");</script>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap.min.css">                                  <!-- https://getbootstrap.com/ -->
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="fontawesome-all.min.css">                           <!-- https://fontawesome.com/ -->
+    
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- STL Loader -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="tooplate-style.css">
 </head>
 
 <body>
     <div id="tm-bg"></div>
     <div id="tm-wrap">
-        <!-- Science Quotes Section -->
-        <div id="science-quotes" class="science-quotes-container">
-            <div class="quote-content">
-                <p id="quote-text" class="quote-text"></p>
-                <span id="quote-author" class="quote-author"></span>
+
+        
+        <!-- Mobile Experience Popup -->
+        <div id="mobile-popup" class="mobile-popup">
+            <div class="mobile-popup-content">
+                <div class="mobile-popup-header">
+                    <h4 data-lang="en">📱 Mobile Detected</h4>
+                    <h4 data-lang="it">📱 Dispositivo Mobile Rilevato</h4>
+                    <button onclick="closeMobilePopup()" class="mobile-popup-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="mobile-popup-body">
+                    <p data-lang="en">For the best experience, we recommend viewing this site on a desktop environment or switching to desktop view in your browser.</p>
+                    <p data-lang="it">Per la migliore esperienza, consigliamo di visualizzare questo sito su un ambiente desktop o di passare alla visualizzazione desktop nel tuo browser.</p>
+                    <div class="mobile-popup-actions">
+                        <button onclick="closeMobilePopup()" class="mobile-popup-btn" data-lang="en">Continue on Mobile</button>
+                        <button onclick="closeMobilePopup()" class="mobile-popup-btn" data-lang="it">Continua su Mobile</button>
+                    </div>
+                </div>
             </div>
         </div>
         
+        <!-- Science Quotes Section -->
         <!-- Language Toggle Button -->
         <div class="language-toggle">
             <button id="langToggle" class="btn btn-sm btn-outline-light">
@@ -41,6 +59,14 @@
             </button>
         </div>
         <div class="tm-main-content">
+            <!-- Science Quotes Container -->
+            <div id="science-quotes" class="science-quotes-container">
+                <div class="quote-content">
+                    <p id="quote-text" class="quote-text"></p>
+                    <span id="quote-author" class="quote-author"></span>
+                </div>
+            </div>
+            
             <div class="container tm-site-header-container">
                 <div class="row">
                     <div class="col-sm-12 col-md-6 col-lg-6 col-md-col-xl-6 mb-md-0 mb-sm-4 mb-4 tm-site-header-col">
@@ -48,8 +74,18 @@
                             <h1 class="mb-4" data-lang="en">Elhad Loshi</h1>
                             <h1 class="mb-4" data-lang="it">Elhad Loshi</h1>
                             <img src="underline.png" class="img-fluid mb-4">
+
                             <p data-lang="en">Mechanical Engineering student at University of Florence</p>
                             <p data-lang="it">Studente di Ingegneria Meccanica all'Università di Firenze</p>        
+                            
+                            <!-- Resume Download Button -->
+                            <div class="resume-section-header mt-4" style="margin: 0;">
+                                <button onclick="showResumeLanguageChoice()" class="resume-link" type="button">
+                                    <i class="fas fa-download fa-2x"></i>
+                                    <span data-lang="en">Download Resume</span>
+                                    <span data-lang="it">Scarica CV</span>
+                                </button>
+                            </div>
                         </div>                        
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -107,18 +143,24 @@
                                                         <div class="profile-image-container">
                                                             <img src="pfpsito.jpg" alt="Profile Photo" class="profile-image">
                                                         </div>
-                                                        <div class="profile-text">
-                                                            <p class="mb-4" data-lang="en">I am a passionate Mechanical Engineering student at the University of Florence, dedicated to learning and applying engineering principles to solve real-world problems.</p>
-                                                            <p class="mb-4" data-lang="it">Sono uno studente appassionato di Ingegneria Meccanica all'Università di Firenze, dedicato all'apprendimento e all'applicazione dei principi ingegneristici per risolvere problemi del mondo reale.</p>
-                                                            <p class="mb-4" data-lang="en">My academic journey has equipped me with strong analytical skills and a deep understanding of mechanical systems, thermodynamics, and material science.</p>
-                                                            <p class="mb-4" data-lang="it">Il mio percorso accademico mi ha fornito forti capacità analitiche e una profonda comprensione dei sistemi meccanici, della termodinamica e della scienza dei materiali.</p>
-                                                            <p class="mb-4" data-lang="en">I'm always eager to take on new challenges and collaborate on innovative projects that push the boundaries of what's possible in mechanical engineering.</p>
-                                                            <p class="mb-4" data-lang="it">Sono sempre desideroso di affrontare nuove sfide e collaborare a progetti innovativi che spingono i confini di ciò che è possibile nell'ingegneria meccanica.</p>
-                                                            <p class="mb-4" data-lang="en">My interests include CAD modeling, finite element analysis, and sustainable engineering solutions. I believe in the power of technology to create positive change in our world.</p>
-                                                            <p class="mb-4" data-lang="it">I miei interessi includono la modellazione CAD, l'analisi agli elementi finiti e le soluzioni ingegneristiche sostenibili. Credo nel potere della tecnologia di creare cambiamenti positivi nel nostro mondo.</p>
-                                                            <p class="mb-4" data-lang="en">When I'm not studying or working on projects, you can find me exploring new technologies, reading about the latest developments in mechanical engineering, or collaborating with fellow students on innovative ideas.</p>
-                                                            <p class="mb-4" data-lang="it">Quando non studio o lavoro sui progetti, puoi trovarmi a esplorare nuove tecnologie, a leggere sui più recenti sviluppi nell'ingegneria meccanica, o a collaborare con altri studenti su idee innovative.</p>
-                                                        </div>
+                                                        
+                                                        <p class="mb-4" data-lang="en">I am a passionate Mechanical Engineering student at the University of Florence, dedicated to learning and applying engineering principles to solve real-world problems.</p>
+                                                        <p class="mb-4" data-lang="it">Sono uno studente appassionato di Ingegneria Meccanica all'Università di Firenze, dedicato all'apprendimento e all'applicazione dei principi ingegneristici per risolvere problemi del mondo reale.</p>
+                                                        <p class="mb-4" data-lang="en">My academic journey has equipped me with strong analytical skills and a deep understanding of mechanical systems, thermodynamics, and material science.</p>
+                                                        <p class="mb-4" data-lang="it">Il mio percorso accademico mi ha fornito forti capacità analitiche e una profonda comprensione dei sistemi meccanici, della termodinamica e della scienza dei materiali.</p>
+                                                        <p class="mb-4" data-lang="en">I'm always eager to take on new challenges and collaborate on innovative projects that push the boundaries of what's possible in mechanical engineering.</p>
+                                                        <p class="mb-4" data-lang="it">Sono sempre desideroso di affrontare nuove sfide e collaborare a progetti innovativi che spingono i confini di ciò che è possibile nell'ingegneria meccanica.</p>
+                                                        <p class="mb-4" data-lang="en">My interests include CAD modeling, finite element analysis, and sustainable engineering solutions. I believe in the power of technology to create positive change in our world.</p>
+                                                        <p class="mb-4" data-lang="it">I miei interessi includono la modellazione CAD, l'analisi agli elementi finiti e le soluzioni ingegneristiche sostenibili. Credo nel potere della tecnologia di creare cambiamenti positivi nel nostro mondo.</p>
+                                                        <p class="mb-4" data-lang="en">When I'm not studying or working on projects, you can find me exploring new technologies, reading about the latest developments in mechanical engineering, or collaborating with fellow students on innovative ideas.</p>
+                                                        <p class="mb-4" data-lang="it">Quando non studio o lavoro sui progetti, puoi trovarmi a esplorare nuove tecnologie, a leggere sui più recenti sviluppi nell'ingegneria meccanica, o a collaborare con altri studenti su idee innovative.</p>
+                                                        
+                                                        <h3 class="mt-4 mb-3" data-lang="en">My Hobbies</h3>
+                                                        <h3 class="mt-4 mb-3" data-lang="it">I Miei Hobby</h3>
+                                                        <p class="mb-4" data-lang="en">Since i was a kid my biggest hobby has been everything with an engine, from cars to planes i like them all, i like getting my hands dirty and working on them, it's my way of relaxing. I recently got into drones and model rockets and, as of 31/07/2025, i'm starting to work on a drone that is able to fly autonomously and uses AI to recognize obstacles and/or follow a path or a moving object for those cool looking social media shots.</p>
+                                                        <p class="mb-4" data-lang="en"> My next biggest hobby is sports, i've done them all from the traditional ones like football to the exotic ones like Muay Thai. Currently i am fully invested in my Triathlon (swim, bike, run) training as i would like to participate in some events and why not, WIN! Because keeping the body fit is as important as keeping the mind sharp.</p>
+                                                        <p class="mb-4" data-lang="it">Da quando ero un bambino la mia più grande passione è tutto ciò che ha un motore, dalle macchine agli aerei. Mi piace lavorarci e sporcarmi le mani, è il mio modo di rilassarmi. Recentemente mi sono appassionato ai droni e modellini di razzi. Attualmente sto lavorando a un drone che è in grado di volare autonomamente e usa l' IA per riconoscere gli ostacoli e/o per seguire un percorso o un oggetto che si muove.</p>
+                                                        <p class="mb-4" data-lang="it">Il mio secondo hobby più grande è lo sport, ho praticato tutti i tipi di sport, da quelli tradizionali come il calcio a quelli più esotici come il Muay Thai. Attualmente sono completamente immerso nel mio allenamento di Triathlon (nuoto, bicicletta, corsa) in quanto vorrei partecipare a qualche evento e perché no, VINCERE! Perché mantenere il corpo in forma è altrettanto importante quanto mantenere la mente acuta.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -137,19 +179,45 @@
                                         <div class="product__description">
                                             <div class="p-sm-4 p-2">
                                                 <div class="row mb-3">
-                                                    <div class="col-12 text-center">
-                                                        <h2 class="tm-page-title" data-lang="en">My Projects</h2>
-                                                        <h2 class="tm-page-title" data-lang="it">I Miei Progetti</h2>        
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-12 text-center">
-                                                        <div class="work-in-progress">
-                                                            <i class="fas fa-tools fa-5x mb-4"></i>
-                                                            <h3 data-lang="en">Work in Progress</h3>
-                                                            <h3 data-lang="it">Lavoro in Corso</h3>
-                                                            <p data-lang="en">Projects coming soon...</p>
-                                                            <p data-lang="it">Progetti in arrivo...</p>
+                                                    <div class="col-12">
+                                                        <div class="projects-index">
+                                                            <div class="projects-header">
+                                                                <i class="fas fa-folder-open fa-3x mb-3"></i>
+                                                                <h3 data-lang="en">My Projects</h3>
+                                                                <h3 data-lang="it">I Miei Progetti</h3>
+                                                            </div>
+                                                            
+                                                            <!-- Project Index List -->
+                                                            <div class="project-list">
+                                                                <div class="project-item" onclick="openProject('this-website')">
+                                                                    <div class="project-item-header">
+                                                                        <i class="fas fa-globe"></i>
+                                                                        <span data-lang="en">This Website</span>
+                                                                        <span data-lang="it">Questo Sito Web</span>
+                                                                        <i class="fas fa-chevron-right"></i>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="project-item" onclick="openProject('autonomous-drone')">
+                                                                    <div class="project-item-header">
+                                                                        <i class="fas fa-plane"></i>
+                                                                        <span data-lang="en">Autonomous Drone</span>
+                                                                        <span data-lang="it">Drone Autonomo</span>
+                                                                        <i class="fas fa-chevron-right"></i>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="project-item" onclick="openProject('project-3')">
+                                                                    <div class="project-item-header">
+                                                                        <i class="fas fa-wrench"></i>
+                                                                        <span data-lang="en">Delta Cleats</span>
+                                                                        <span data-lang="it">Delta Cleats</span>
+                                                                        <i class="fas fa-chevron-right"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -184,11 +252,11 @@
                                                     <div class="col-12 text-center">
                                                         <div class="social-links" style="display: flex; justify-content: center; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
                                                             <div class="linkedin-section" style="margin: 0;">
-                                                                <a href="https://www.linkedin.com/in/elhad-loshi-3a484a201/" target="_blank" class="linkedin-link">
-                                                                    <i class="fab fa-linkedin fa-3x"></i>
-                                                                    <span data-lang="en">Connect on LinkedIn</span>
-                                                                    <span data-lang="it">Connettiti su LinkedIn</span>
-                                                                </a>
+                                                            <a href="https://www.linkedin.com/in/elhad-loshi-3a484a201/" target="_blank" class="linkedin-link">
+                                                                <i class="fab fa-linkedin fa-3x"></i>
+                                                                <span data-lang="en">Connect on LinkedIn</span>
+                                                                <span data-lang="it">Connettiti su LinkedIn</span>
+                                                            </a>
                                                             </div>
                                                             <div class="github-section" style="margin: 0;">
                                                                 <a href="https://github.com/ElhadLoshi" target="_blank" class="github-link">
@@ -229,6 +297,78 @@
                     </div>
                 </div>                
             </div>
+            
+            <!-- Skills Radar Chart Section -->
+            <div class="skills-radar-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <h2 class="skills-radar-title" data-lang="en">Technical Skills Overview</h2>
+                            <h2 class="skills-radar-title" data-lang="it">Panoramica Competenze Tecniche</h2>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="radar-chart-container">
+                                <canvas id="skillsRadarChart" width="700" height="700"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 3D Model Viewer Section -->
+            <div class="stl-viewer-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <h2 class="stl-viewer-title" data-lang="en">3D Model Viewer</h2>
+                            <h2 class="stl-viewer-title" data-lang="it">Visualizzatore Modelli 3D</h2>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                                                     <div class="stl-viewer-container">
+                             <canvas id="stlViewer" width="800" height="600"></canvas>
+                                <div class="viewer-controls">
+                                    <button onclick="resetView()" class="viewer-btn">
+                                        <i class="fas fa-home"></i>
+                                        <span data-lang="en">Reset View</span>
+                                        <span data-lang="it">Ripristina Vista</span>
+                                    </button>
+                                    <button onclick="toggleWireframe()" class="viewer-btn">
+                                        <i class="fas fa-cube"></i>
+                                        <span data-lang="en">Wireframe</span>
+                                        <span data-lang="it">Wireframe</span>
+                                    </button>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cool Stuff Section -->
+            <div class="cool-stuff-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <h2 class="cool-stuff-title" data-lang="en">Cool Stuff</h2>
+                            <h2 class="cool-stuff-title" data-lang="it">Cool Stuff</h2>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="vector-field-container">
+                                <canvas id="vectorField" width="700" height="400"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <footer>
                 <p class="small tm-copyright-text">Copyright &copy; <span class="tm-current-year">2020</span> Elos Industries. 
                 
@@ -236,6 +376,24 @@
             </footer>
         </div> <!-- .tm-main-content -->  
     </div>
+    
+    <!-- Project Detail Modal -->
+    <div id="project-modal" class="project-modal">
+        <div class="project-modal-content">
+            <div class="project-modal-header">
+                <h4 id="modal-title" data-lang="en">Project Title</h4>
+                <button onclick="closeProject(); event.stopPropagation();" class="close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="project-modal-body">
+                <div id="modal-content">
+                    <!-- Project content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- load JS -->
     <script src="jquery-3.2.1.slim.min.js"></script>         <!-- https://jquery.com/ -->    
     <script src="slick.min.js"></script>                  <!-- http://kenwheeler.github.io/slick/ -->  
@@ -266,7 +424,34 @@
                 setupFooter();
             });
 
-            $('.tm-current-year').text(new Date().getFullYear());  // Update year in copyright           
+            $('.tm-current-year').text(new Date().getFullYear());  // Update year in copyright
+            
+            // Mobile detection and popup
+            function isMobileDevice() {
+                return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+                       window.innerWidth <= 768;
+            }
+            
+            function showMobilePopup() {
+                const popup = document.getElementById('mobile-popup');
+                if (popup) {
+                    popup.classList.add('show');
+                }
+            }
+            
+            window.closeMobilePopup = function() {
+                const popup = document.getElementById('mobile-popup');
+                if (popup) {
+                    popup.classList.remove('show');
+                }
+            };
+            
+            // Show mobile popup if on mobile device
+            if (isMobileDevice()) {
+                setTimeout(showMobilePopup, 1000); // Show after 1 second
+            }
+            
+           
 
             // Language Toggle Functionality
             let currentLang = 'en';
@@ -279,7 +464,150 @@
                 // Update button text
                 const buttonText = currentLang === 'en' ? 'EN/IT' : 'IT/EN';
                 langToggle.innerHTML = '<i class="fas fa-globe"></i> ' + buttonText;
+                
+                // Update radar chart when language changes
+                updateRadarChart();
             });
+
+            // Skills Radar Chart Implementation
+            let radarChart = null;
+
+            // Chart data and configuration following Chart.js documentation
+            function getSkillsData() {
+                const currentLang = document.body.getAttribute('data-current-lang') || 'en';
+                
+                const skillLabels = currentLang === 'it' ? 
+                    ['CAD', 'Programmazione', 'Analisi FEM', 'Termodinamica', 'Scienza Materiali', 'Project Management', 'Problem Solving', 'Ricerca & Sviluppo'] :
+                    ['CAD', 'Programming', 'FEM Analysis', 'Thermodynamics', 'Material Science', 'Project Management', 'Problem Solving', 'Research & Development'];
+
+                return {
+                    labels: skillLabels,
+                    datasets: [
+                        {
+                            label: currentLang === 'it' ? 'Competenze Attuali' : 'Current Skills',
+                            data: [85, 60, 70, 70, 85, 75, 90, 75],
+                            backgroundColor: 'rgba(0, 119, 181, 0.2)',
+                            borderColor: 'rgba(0, 119, 181, 0.8)',
+                            borderWidth: 2,
+                            pointBackgroundColor: 'rgba(0, 119, 181, 0.8)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgba(0, 119, 181, 1)',
+                            fill: true
+                        },
+                        {
+                            label: currentLang === 'it' ? 'Obiettivi Futuri' : 'Future Goals',
+                            data: [95, 85, 85, 90, 95, 80, 95, 85],
+                            backgroundColor: 'rgba(70, 80, 90, 0.15)',
+                            borderColor: 'rgba(70, 80, 90, 0.8)',
+                            borderWidth: 2,
+                            pointBackgroundColor: 'rgba(70, 80, 90, 0.8)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgba(70, 80, 90, 1)',
+                            fill: false
+                        }
+                    ]
+                };
+            }
+
+            function getChartOptions() {
+                return {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: 'rgba(255, 255, 255, 0.9)',
+                                font: {
+                                    size: 14
+                                },
+                                padding: 20,
+                                usePointStyle: true
+                            }
+                        },
+                        filler: {
+                            propagate: false
+                        }
+                    },
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                stepSize: 20,
+                                color: 'rgba(255, 255, 255, 0.6)',
+                                font: {
+                                    size: 11
+                                },
+                                backdropColor: 'transparent'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.2)',
+                                lineWidth: 1
+                            },
+                            pointLabels: {
+                                color: 'rgba(255, 255, 255, 0.9)',
+                                font: {
+                                    size: 12,
+                                    weight: '500'
+                                }
+                            },
+                            angleLines: {
+                                color: 'rgba(255, 255, 255, 0.2)',
+                                lineWidth: 1
+                            }
+                        }
+                    },
+                    elements: {
+                        point: {
+                            radius: 4,
+                            hoverRadius: 6
+                        },
+                        line: {
+                            borderWidth: 2
+                        }
+                    },
+                    interaction: {
+                        intersect: false
+                    }
+                };
+            }
+
+            function createRadarChart() {
+                const ctx = document.getElementById('skillsRadarChart');
+                if (!ctx) {
+                    console.log('Canvas element not found');
+                    return;
+                }
+
+                if (typeof Chart === 'undefined') {
+                    console.log('Chart.js not loaded');
+                    return;
+                }
+
+                const config = {
+                    type: 'radar',
+                    data: getSkillsData(),
+                    options: getChartOptions()
+                };
+
+                radarChart = new Chart(ctx, config);
+                console.log('Skills radar chart created successfully');
+            }
+
+            function updateRadarChart() {
+                if (radarChart) {
+                    radarChart.data = getSkillsData();
+                    radarChart.update();
+                }
+            }
+
+            // Initialize radar chart when page loads
+            setTimeout(() => {
+                createRadarChart();
+            }, 1000);
 
             // Science Quotes Functionality
             const scienceQuotes = [
@@ -476,27 +804,792 @@
             // Initialize quotes on main page
             showQuotes();
 
-            // Simple state checker - checks if we should show/hide quotes
+            // Simple state checker - only hide quotes when sections are opened
             function checkQuoteVisibility() {
-                const detailsElement = $('.details');
                 const detailsOpen = $('.details--open').length > 0;
-                const detailsVisible = detailsElement.length > 0 && detailsElement.css('display') !== 'none';
                 
-                // If details are closed/hidden and quotes are hidden, show them
-                if (!detailsOpen && !detailsVisible && !quotesVisible) {
-                    showQuotes();
-                }
-                // If details are open/visible and quotes are visible, hide them
-                else if ((detailsOpen || detailsVisible) && quotesVisible) {
+                // If a section is open and quotes are visible, hide them
+                if (detailsOpen && quotesVisible) {
                     hideQuotes();
+                }
+                // If no section is open and quotes are hidden, show them
+                else if (!detailsOpen && !quotesVisible) {
+                    showQuotes();
                 }
             }
 
-            // Check every 500ms for quote visibility state (start after a delay to ensure everything is loaded)
+            // Check every 500ms for section state changes
             setTimeout(() => {
                 setInterval(checkQuoteVisibility, 500);
             }, 1000);
+            
 
+
+            // Resume Language Selection Function
+            window.showResumeLanguageChoice = function() {
+                const currentLang = document.body.getAttribute('data-current-lang') || 'en';
+                
+                let message, englishOption, italianOption, cancelOption;
+                
+                if (currentLang === 'it') {
+                    message = "Scegli la lingua del CV:";
+                    englishOption = "Inglese";
+                    italianOption = "Italiano";
+                    cancelOption = "Annulla";
+                } else {
+                    message = "Choose resume language:";
+                    englishOption = "English";
+                    italianOption = "Italian";
+                    cancelOption = "Cancel";
+                }
+
+                // Create modal
+                const modal = document.createElement('div');
+                modal.className = 'resume-language-modal';
+                modal.innerHTML = `
+                    <div class="resume-language-modal-content">
+                        <h3>${message}</h3>
+                        <div class="language-buttons">
+                            <button onclick="downloadResume('en')" class="lang-btn lang-btn-en">
+                                <div class="flag-icon flag-uk"></div>
+                                ${englishOption}
+                            </button>
+                            <button onclick="downloadResume('it')" class="lang-btn lang-btn-it">
+                                <div class="flag-icon flag-italy"></div>
+                                ${italianOption}
+                            </button>
+                        </div>
+                        <button onclick="closeResumeModal()" class="cancel-btn">${cancelOption}</button>
+                    </div>
+                `;
+
+                document.body.appendChild(modal);
+                
+                // Show modal with animation
+                setTimeout(() => {
+                    modal.classList.add('show');
+                }, 10);
+            };
+
+            // Download Resume Function
+            window.downloadResume = function(language) {
+                let filename, downloadPath;
+                
+                if (language === 'it') {
+                    filename = 'Elhad_Loshi_CV_Italiano.pdf';
+                    downloadPath = 'resume_it.pdf';
+                } else {
+                    filename = 'Elhad_Loshi_Resume_English.pdf';
+                    downloadPath = 'resume_en.pdf';
+                }
+
+                // Create temporary download link
+                const link = document.createElement('a');
+                link.href = downloadPath;
+                link.download = filename;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                // Close modal
+                closeResumeModal();
+            };
+
+            // Close Modal Function
+            window.closeResumeModal = function() {
+                const modal = document.querySelector('.resume-language-modal');
+                if (modal) {
+                    modal.classList.remove('show');
+                    setTimeout(() => {
+                        document.body.removeChild(modal);
+                    }, 300);
+                }
+            };
+
+            // Vector Field Animation
+            function initVectorField() {
+                const canvas = document.getElementById('vectorField');
+                if (!canvas) return;
+                
+                const ctx = canvas.getContext('2d');
+                
+                // Set canvas size with proper dimensions
+                canvas.width = 700;
+                canvas.height = 400;
+                
+                const width = canvas.width;
+                const height = canvas.height;
+                
+                // Vector field parameters
+                const gridSize = 30;
+                const cols = Math.floor(width / gridSize);
+                const rows = Math.floor(height / gridSize);
+                
+                let mouseX = 0;
+                let mouseY = 0;
+                let isMouseInCanvas = false;
+                
+                // Mouse event listeners
+                canvas.addEventListener('mousemove', (e) => {
+                    const rect = canvas.getBoundingClientRect();
+                    mouseX = e.clientX - rect.left;
+                    mouseY = e.clientY - rect.top;
+                    isMouseInCanvas = true;
+                });
+                
+                canvas.addEventListener('mouseleave', () => {
+                    isMouseInCanvas = false;
+                });
+                
+                // Touch event listeners for mobile
+                canvas.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    const rect = canvas.getBoundingClientRect();
+                    const touch = e.touches[0];
+                    mouseX = touch.clientX - rect.left;
+                    mouseY = touch.clientY - rect.top;
+                    isMouseInCanvas = true;
+                });
+                
+                canvas.addEventListener('touchmove', (e) => {
+                    e.preventDefault();
+                    const rect = canvas.getBoundingClientRect();
+                    const touch = e.touches[0];
+                    mouseX = touch.clientX - rect.left;
+                    mouseY = touch.clientY - rect.top;
+                    isMouseInCanvas = true;
+                });
+                
+                canvas.addEventListener('touchend', () => {
+                    isMouseInCanvas = false;
+                });
+                
+                // Calculate vector at a point
+                function calculateVector(x, y) {
+                    let baseVector = { x: 0, y: 0 };
+                    
+                    // Default circular flow
+                    const centerX = width / 2;
+                    const centerY = height / 2;
+                    const dx = x - centerX;
+                    const dy = y - centerY;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance > 10) {
+                        // Create circular flow
+                        const angle = Math.atan2(dy, dx) + Math.PI / 2;
+                        const magnitude = 2;
+                        baseVector = {
+                            x: Math.cos(angle) * magnitude,
+                            y: Math.sin(angle) * magnitude
+                        };
+                    }
+                    
+                    if (!isMouseInCanvas) {
+                        return baseVector;
+                    }
+                    
+                    // Mouse influence
+                    const mouseDx = mouseX - x;
+                    const mouseDy = mouseY - y;
+                    const mouseDistance = Math.sqrt(mouseDx * mouseDx + mouseDy * mouseDy);
+                    
+                    if (mouseDistance < 10) return baseVector;
+                    
+                    // Stronger influence closer to mouse
+                    const influence = Math.max(0, 150 - mouseDistance) / 150;
+                    const mouseMagnitude = 8 * influence;
+                    
+                    const mouseVector = {
+                        x: (mouseDx / mouseDistance) * mouseMagnitude,
+                        y: (mouseDy / mouseDistance) * mouseMagnitude
+                    };
+                    
+                    // Combine base flow with mouse influence
+                    return {
+                        x: baseVector.x + mouseVector.x,
+                        y: baseVector.y + mouseVector.y
+                    };
+                }
+                
+                // Draw vector field
+                function drawVectorField() {
+                    ctx.clearRect(0, 0, width, height);
+                    
+                    // Draw background grid
+                    ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+                    ctx.lineWidth = 1;
+                    
+                    for (let i = 0; i <= cols; i++) {
+                        ctx.beginPath();
+                        ctx.moveTo(i * gridSize, 0);
+                        ctx.lineTo(i * gridSize, height);
+                        ctx.stroke();
+                    }
+                    
+                    for (let i = 0; i <= rows; i++) {
+                        ctx.beginPath();
+                        ctx.moveTo(0, i * gridSize);
+                        ctx.lineTo(width, i * gridSize);
+                        ctx.stroke();
+                    }
+                    
+                    // Draw vectors
+                    for (let i = 0; i < cols; i++) {
+                        for (let j = 0; j < rows; j++) {
+                            const x = i * gridSize + gridSize / 2;
+                            const y = j * gridSize + gridSize / 2;
+                            
+                            const vector = calculateVector(x, y);
+                            const magnitude = Math.sqrt(vector.x * vector.x + vector.y * vector.y);
+                            
+                            if (magnitude > 0.1) {
+                                // Draw arrow
+                                const angle = Math.atan2(vector.y, vector.x);
+                                const arrowLength = Math.min(magnitude * 8, 15);
+                                
+                                ctx.strokeStyle = `rgba(0, 119, 181, ${Math.min(magnitude / 3, 1)})`;
+                                ctx.lineWidth = Math.min(magnitude, 2);
+                                
+                                ctx.beginPath();
+                                ctx.moveTo(x, y);
+                                ctx.lineTo(
+                                    x + Math.cos(angle) * arrowLength,
+                                    y + Math.sin(angle) * arrowLength
+                                );
+                                ctx.stroke();
+                                
+                                // Draw arrowhead
+                                const headLength = 5;
+                                const headAngle = Math.PI / 6;
+                                
+                                ctx.beginPath();
+                                ctx.moveTo(
+                                    x + Math.cos(angle) * arrowLength,
+                                    y + Math.sin(angle) * arrowLength
+                                );
+                                ctx.lineTo(
+                                    x + Math.cos(angle) * arrowLength - headLength * Math.cos(angle - headAngle),
+                                    y + Math.sin(angle) * arrowLength - headLength * Math.sin(angle - headAngle)
+                                );
+                                ctx.moveTo(
+                                    x + Math.cos(angle) * arrowLength,
+                                    y + Math.sin(angle) * arrowLength
+                                );
+                                ctx.lineTo(
+                                    x + Math.cos(angle) * arrowLength - headLength * Math.cos(angle + headAngle),
+                                    y + Math.sin(angle) * arrowLength - headLength * Math.sin(angle + headAngle)
+                                );
+                                ctx.stroke();
+                            }
+                        }
+                    }
+                    
+                    requestAnimationFrame(drawVectorField);
+                }
+                
+                // Start animation
+                console.log('Vector field initialized with dimensions:', canvas.width, 'x', canvas.height);
+                drawVectorField();
+            }
+            
+            // Initialize vector field when DOM is ready
+            $(function() {
+                setTimeout(initVectorField, 1000);
+                setTimeout(initSTLViewer, 1500);
+                
+                // Fallback: ensure vector field is visible
+                setTimeout(() => {
+                    const vectorField = document.getElementById('vectorField');
+                    if (vectorField && vectorField.style.display === 'none') {
+                        vectorField.style.display = 'block';
+                    }
+                }, 2000);
+            });
+
+        });
+
+        // 3D STL Viewer Functions
+        let stlScene, stlCamera, stlRenderer, stlMesh;
+        let isWireframe = false;
+        let isDragging = false;
+        let previousMousePosition = { x: 0, y: 0 };
+        let rotation = { x: 0, y: 0 };
+
+        function initSTLViewer() {
+            const canvas = document.getElementById('stlViewer');
+            if (!canvas) return;
+
+            // Create scene
+            stlScene = new THREE.Scene();
+            stlScene.background = new THREE.Color(0x1a1a2e);
+
+                          // Create camera with much narrower field of view for dramatic zoom
+              stlCamera = new THREE.PerspectiveCamera(30, canvas.width / canvas.height, 0.1, 1000);
+              stlCamera.position.z = 9;
+              
+              // Create renderer
+            stlRenderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+            stlRenderer.setSize(canvas.width, canvas.height);
+            stlRenderer.setClearColor(0x1a1a2e);
+
+            // Add lighting
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+            stlScene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(1, 1, 1);
+            stlScene.add(directionalLight);
+
+            const directionalLight2 = new THREE.DirectionalLight(0x0077b5, 0.4);
+            directionalLight2.position.set(-1, -1, -1);
+            stlScene.add(directionalLight2);
+
+            // Create a sample geometric shape (placeholder for STL)
+            createSampleGeometry();
+
+            // Add event listeners for mouse and touch
+            canvas.addEventListener('mousedown', onMouseDown);
+            canvas.addEventListener('mousemove', onMouseMove);
+            canvas.addEventListener('mouseup', onMouseUp);
+            canvas.addEventListener('wheel', onMouseWheel);
+            
+            // Add touch event listeners for mobile
+            canvas.addEventListener('touchstart', onTouchStart, { passive: false });
+            canvas.addEventListener('touchmove', onTouchMove, { passive: false });
+            canvas.addEventListener('touchend', onTouchEnd, { passive: false });
+
+
+
+            // Start animation
+            animate();
+            
+
+        }
+
+        function createSampleGeometry() {
+            // Load the actual STL file
+            const loader = new THREE.STLLoader();
+            
+            loader.load('dronebody.stl', function(geometry) {
+                const material = new THREE.MeshPhongMaterial({ 
+                    color: 0x0077b5,
+                    transparent: true,
+                    opacity: 0.9
+                });
+                
+                stlMesh = new THREE.Mesh(geometry, material);
+                
+                // Center the model
+                geometry.computeBoundingBox();
+                const center = geometry.boundingBox.getCenter(new THREE.Vector3());
+                stlMesh.position.sub(center);
+                
+                // Scale the model to be much larger in the viewer
+                const box = new THREE.Box3().setFromObject(stlMesh);
+                const size = box.getSize(new THREE.Vector3());
+                const maxDim = Math.max(size.x, size.y, size.z);
+                const scale = 8 / maxDim; // Scale to be much larger (8x instead of 2x)
+                stlMesh.scale.setScalar(scale);
+                
+                stlScene.add(stlMesh);
+            }, 
+            // Progress callback
+            function(xhr) {
+                console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+            },
+            // Error callback
+            function(error) {
+                console.error('Error loading STL file:', error);
+                // Fallback to grid if STL fails to load
+                createFallbackGeometry();
+            });
+        }
+        
+        function createFallbackGeometry() {
+            // Create a simple coordinate system as fallback
+            const geometry = new THREE.Group();
+            
+            // Add a simple grid helper
+            const gridHelper = new THREE.GridHelper(4, 8, 0x0077b5, 0x0077b5);
+            gridHelper.material.opacity = 0.3;
+            gridHelper.material.transparent = true;
+            geometry.add(gridHelper);
+            
+            // Add coordinate axes
+            const axesHelper = new THREE.AxesHelper(2);
+            geometry.add(axesHelper);
+
+            stlMesh = geometry;
+            stlScene.add(stlMesh);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // Only render, no automatic rotation
+            stlRenderer.render(stlScene, stlCamera);
+        }
+
+        function onMouseDown(event) {
+            isDragging = true;
+            previousMousePosition = {
+                x: event.clientX,
+                y: event.clientY
+            };
+        }
+
+        function onMouseMove(event) {
+            if (!isDragging) return;
+
+            const deltaMove = {
+                x: event.clientX - previousMousePosition.x,
+                y: event.clientY - previousMousePosition.y
+            };
+
+            rotation.x += deltaMove.y * 0.01;
+            rotation.y += deltaMove.x * 0.01;
+
+            if (stlMesh) {
+                stlMesh.rotation.x = rotation.x;
+                stlMesh.rotation.y = rotation.y;
+            }
+
+            previousMousePosition = {
+                x: event.clientX,
+                y: event.clientY
+            };
+        }
+
+        function onMouseUp() {
+            isDragging = false;
+        }
+
+        function onMouseWheel(event) {
+            const zoomSpeed = 0.02;
+            const delta = event.deltaY > 0 ? 1 : -1;
+            
+            stlCamera.position.z += delta * zoomSpeed;
+            stlCamera.position.z = Math.max(0.05, Math.min(1.5, stlCamera.position.z));
+        }
+
+        // Touch event handlers for mobile
+        function onTouchStart(event) {
+            event.preventDefault();
+            if (event.touches.length === 1) {
+                isDragging = true;
+                previousMousePosition = {
+                    x: event.touches[0].clientX,
+                    y: event.touches[0].clientY
+                };
+            }
+        }
+
+        function onTouchMove(event) {
+            event.preventDefault();
+            if (!isDragging || event.touches.length !== 1) return;
+
+            const deltaMove = {
+                x: event.touches[0].clientX - previousMousePosition.x,
+                y: event.touches[0].clientY - previousMousePosition.y
+            };
+
+            rotation.x += deltaMove.y * 0.01;
+            rotation.y += deltaMove.x * 0.01;
+
+            if (stlMesh) {
+                stlMesh.rotation.x = rotation.x;
+                stlMesh.rotation.y = rotation.y;
+            }
+
+            previousMousePosition = {
+                x: event.touches[0].clientX,
+                y: event.touches[0].clientY
+            };
+        }
+
+        function onTouchEnd(event) {
+            event.preventDefault();
+            isDragging = false;
+        }
+
+        window.resetView = function() {
+            if (stlCamera) {
+                stlCamera.position.z = 9;
+            }
+            if (stlMesh) {
+                rotation.x = 0;
+                rotation.y = 0;
+                stlMesh.rotation.x = 0;
+                stlMesh.rotation.y = 0;
+            }
+        };
+
+        window.toggleWireframe = function() {
+            isWireframe = !isWireframe;
+            if (stlMesh) {
+                stlMesh.traverse((child) => {
+                    if (child.isMesh) {
+                        child.material.wireframe = isWireframe;
+                    }
+                });
+            }
+        };
+        
+        window.scrollToViewer = function() {
+            console.log('scrollToViewer called');
+            
+            // Close the modal first
+            closeProject();
+            
+            // Try multiple methods to close the My Projects box
+            const detailsElement = document.querySelector('.details');
+            if (detailsElement) {
+                console.log('Found details element, removing details--open class');
+                detailsElement.classList.remove('details--open');
+            }
+            
+            // Also try to hide the details element directly
+            const allDetailsElements = document.querySelectorAll('.details');
+            allDetailsElements.forEach(el => {
+                el.style.display = 'none';
+                el.style.opacity = '0';
+                el.style.visibility = 'hidden';
+            });
+            
+            // Try to remove any active classes from product elements
+            const allProducts = document.querySelectorAll('.product');
+            allProducts.forEach(product => {
+                product.classList.remove('active');
+            });
+            
+            // Try to hide any product backgrounds
+            const allProductBgs = document.querySelectorAll('.product__bg');
+            allProductBgs.forEach(bg => {
+                bg.style.opacity = '1';
+            });
+            
+            console.log('Attempted to close My Projects box');
+            
+            // Scroll to the 3D viewer section
+            const viewerSection = document.querySelector('.stl-viewer-section');
+            if (viewerSection) {
+                viewerSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }
+        };
+
+        // Project Modal Functions - Global scope
+        window.openProject = function(projectId) {
+                        console.log('openProject called with:', projectId);
+            const modal = document.getElementById('project-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalContent = document.getElementById('modal-content');
+            
+            console.log('Modal elements found:', {
+                modal: modal,
+                modalTitle: modalTitle,
+                modalContent: modalContent
+            });
+                
+                // Project data - you can customize this
+                const projects = {
+                    'this-website': {
+                        title: {
+                            en: 'This Website',
+                            it: 'Questo Sito Web'
+                        },
+                        content: {
+                            en: `
+                                <p>Even if at first site it might seem like a simple website, it's actually quite complex and took me 2 full days of intense work to build it, and i am still far from done.</p>
+                                
+                                <h5>Technologies Used:</h5>
+                                <ul>
+                                    <li>HTML5 & CSS3</li>
+                                    <li>JavaScript (ES6+)</li>
+                                    <li>Bootstrap Framework</li>
+                                    <li>Chart.js for Data Visualization</li>
+                                    <li>FontAwesome Icons</li>
+                                    <li>Responsive Design</li>
+                                </ul>
+                                
+                                <h5>Features:</h5>
+                                <ul>
+                                    <li>Interactive vector field animation</li>
+                                    <li>Dynamic project modal system</li>
+                                    <li>Bilingual support (English/Italian)</li>
+                                    <li>Skills radar chart visualization</li>
+                                    <li>Responsive design for all devices</li>
+                                    <li>Smooth animations and transitions</li>
+                                </ul>
+                                
+                                <h5>Status:</h5>
+                                <p>Completed and actively maintained</p>
+                            `,
+                            it: `
+                                <p>Anche se a prima vista può sembrare un banale sito web, è in realtà molto complesso e ha richiesto 2 giorni di lavoro intenso per essere realizzato, e sono ancora lontano dall'esssere soddisfatto</p>
+                                
+                                <h5>Tecnologie Utilizzate:</h5>
+                                <ul>
+                                    <li>HTML5 & CSS3</li>
+                                    <li>JavaScript (ES6+)</li>
+                                    <li>Framework Bootstrap</li>
+                                    <li>Chart.js per Visualizzazione Dati</li>
+                                    <li>Icone FontAwesome</li>
+                                    <li>Design Responsivo</li>
+                                </ul>
+                                
+                                <h5>Caratteristiche:</h5>
+                                <ul>
+                                    <li>Animazione campo vettoriale interattivo</li>
+                                    <li>Sistema modale progetti dinamico</li>
+                                    <li>Supporto bilingue (Inglese/Italiano)</li>
+                                    <li>Visualizzazione grafico competenze</li>
+                                    <li>Design responsive per tutti i dispositivi</li>
+                                    <li>Animazioni e transizioni fluide</li>
+                                </ul>
+                                
+                                <h5>Stato:</h5>
+                                <p>Completato e attivamente mantenuto</p>
+                            `
+                        }
+                    },
+                    'autonomous-drone': {
+                        title: {
+                            en: 'Autonomous Drone',
+                            it: 'Drone Autonomo'
+                        },
+                        content: {
+                            en: `
+                                                             <p>An AI-powered autonomous drone capable of obstacle detection, path following, and object tracking for cinematic aerial photography.</p>
+                             <p>Till now i have designed the 3D printable drones chassis, i have yet to work on the more tedious parts like the electronics and the software. Check it out!</p>
+                             
+                             <div class="project-actions">
+                                 <button onclick="scrollToViewer()" class="check-it-out-btn">
+                                     <i class="fas fa-eye"></i>
+                                     <span data-lang="en">Check it out</span>
+                                     <span data-lang="it">Dagli un'occhiata</span>
+                                 </button>
+                             </div>
+                             
+                             <h5>Technologies Used:</h5>
+                                <ul>
+                                    <li>Computer Vision & AI</li>
+                                    <li>Flight Control Systems</li>
+                                    <li>Path Planning Algorithms</li>
+                                    <li>Real-time Processing</li>
+                                </ul>
+                                
+                                <h5>Features:</h5>
+                                <ul>
+                                    <li>Obstacle detection and avoidance</li>
+                                    <li>Autonomous path following</li>
+                                    <li>Object tracking for cinematic shots</li>
+                                    <li>Real-time AI processing</li>
+                                </ul>
+                                
+                                                             <h5>Status:</h5>
+                             <p>Currently in development. Expected completion: Q4 2025</p>
+                            `,
+                            it: `
+                                <p>Un drone autonomo alimentato da IA in grado di rilevare ostacoli, seguire percorsi e tracciare oggetti per la fotografia aerea cinematografica.</p>
+                                <p>Finora ho progettato lo chassis del drone con l'obiettivo di stamparlo in 3D, devo lavorare su parti più tediose come l'elettronica e il software. Guarda!</p>
+                                
+                                <div class="project-actions">
+                                    <button onclick="scrollToViewer()" class="check-it-out-btn">
+                                        <i class="fas fa-eye"></i>
+                                        <span data-lang="en">Check it out</span>
+                                        <span data-lang="it">Dagli un'occhiata</span>
+                                    </button>
+                                </div>
+                                
+                                <h5>Tecnologie Utilizzate:</h5>
+                                <ul>
+                                    <li>Computer Vision & IA</li>
+                                    <li>Sistemi di Controllo di Volo</li>
+                                    <li>Algoritmi di Pianificazione Percorsi</li>
+                                    <li>Elaborazione in Tempo Reale</li>
+                                </ul>
+                                
+                                <h5>Caratteristiche:</h5>
+                                <ul>
+                                    <li>Rilevamento ed evitamento ostacoli</li>
+                                    <li>Seguimento percorsi autonomo</li>
+                                    <li>Tracciamento oggetti per riprese cinematografiche</li>
+                                    <li>Elaborazione IA in tempo reale</li>
+                                </ul>
+                                
+                                                                                             <h5>Stato:</h5>
+                                <p>Attualmente in sviluppo. Completamento previsto: Q4 2025</p>
+                            `
+                        }
+                    },
+                    'project-3': {
+                        title: {
+                            en: 'Delta Cleats',
+                            it: 'Delta Cleats'
+                        },
+                        content: {
+                            en: `
+                                <p>Having i recently bought a pair of delta cleats, i decided to design a 3D printable version of them.</p>
+                                
+                                <h5>Description:</h5>
+                                <p>I designed these cleats to fit my cycling shoes and the first iteration, made out of pla, surprisingly was a success, they printed in an hour each for a cost of 20cents. They lasted me well over 1000km. I have just printed a new pair this time in PETG and i can't wait to try them. Once i do i'll write a small paper comparing the two</p>
+                                
+                                <h5>Technologies:</h5>
+                                <ul>
+                                    <li>CAD</li>
+                                    <li>3D Printing</li>
+                                   
+                                </ul>
+                            `,
+                            it: `
+                                <p>Avendo recentemente comprato una coppia di delta cleats, ho deciso di progettare una versione 3D stampabile di questi.</p>
+                                
+                                <h5>Descrizione:</h5>
+                                <p>Ho progettato questi cleats per adattarsi alle mie scarpe da ciclismo e la prima iterazione, fatta in pla, sorprendentemente è stata un successo, le ho stampate in un'ora ciascuno per un costo di 20centesimi. Sono durate ben oltre 1000km. Ho appena stampato una nuova coppia questa volta in PETG e non vedo l'ora di provarle. Una volta che le ho provate scriverò un piccolo paper per confrontare le due</p>
+                                
+                                <h5>Tecnologie:</h5>
+                                <ul>
+                                    <li>CAD</li>
+                                    <li>Stampa 3D</li>
+                                </ul>
+                            `
+                        }
+                    }
+                };
+                
+                const currentLang = document.body.getAttribute('data-current-lang') || 'en';
+                const project = projects[projectId];
+                
+                if (project) {
+                    console.log('Setting modal content for:', projectId);
+                    modalTitle.textContent = project.title[currentLang];
+                    modalContent.innerHTML = project.content[currentLang];
+                    modal.classList.add('show');
+                    console.log('Modal should now be visible');
+                } else {
+                    console.log('Project not found:', projectId);
+                }
+            }
+        
+        function closeProject() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('show');
+            // Prevent event from bubbling up to parent containers
+            if (event) {
+                event.stopPropagation();
+            }
+        }
+        
+        // Close modal when clicking outside
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('project-modal');
+            if (e.target === modal) {
+                closeProject();
+            }
         });
 
     </script>             
