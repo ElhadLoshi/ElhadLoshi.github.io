@@ -545,10 +545,20 @@ body[data-current-lang="it"] [data-lang="it"] {
   border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
+.profile-text {
+  overflow: hidden;
+}
+
+.profile-text p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+  font-size: 1.2rem;
+}
+
 .Cup-container {
   float: right;
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   margin: 0 20px 20px 0;
 }
 
@@ -558,16 +568,6 @@ body[data-current-lang="it"] [data-lang="it"] {
   object-fit: cover;
   border-radius: 10px;
   border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.profile-text {
-  overflow: hidden;
-}
-
-.profile-text p {
-  margin-bottom: 15px;
-  line-height: 1.6;
-  font-size: 1.2rem;
 }
 
 /* Scrollbar styling for the about me section */
@@ -1687,4 +1687,5 @@ body[data-current-lang="it"] [data-lang="it"] {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 119, 181, 0.4);
 }
+
 
